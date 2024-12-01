@@ -1,0 +1,91 @@
+[
+    {
+        "label": "http.server",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "http.server",
+        "description": "http.server",
+        "detail": "http.server",
+        "documentation": {}
+    },
+    {
+        "label": "socketserver",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socketserver",
+        "description": "socketserver",
+        "detail": "socketserver",
+        "documentation": {}
+    },
+    {
+        "label": "webbrowser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "webbrowser",
+        "description": "webbrowser",
+        "detail": "webbrowser",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "PORT",
+        "kind": 5,
+        "importPath": "tests.serve",
+        "description": "tests.serve",
+        "peekOfCode": "PORT = 8080\nDIRECTORY = Path(__file__).parent\n# Create required directories if they don't exist\nrequired_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">",
+        "detail": "tests.serve",
+        "documentation": {}
+    },
+    {
+        "label": "DIRECTORY",
+        "kind": 5,
+        "importPath": "tests.serve",
+        "description": "tests.serve",
+        "peekOfCode": "DIRECTORY = Path(__file__).parent\n# Create required directories if they don't exist\nrequired_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">\n<!-- Your existing index.html content -->",
+        "detail": "tests.serve",
+        "documentation": {}
+    },
+    {
+        "label": "required_dirs",
+        "kind": 5,
+        "importPath": "tests.serve",
+        "description": "tests.serve",
+        "peekOfCode": "required_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">\n<!-- Your existing index.html content -->\n''',\n    'css/style.css': '''/* Your existing CSS content */",
+        "detail": "tests.serve",
+        "documentation": {}
+    },
+    {
+        "label": "required_files",
+        "kind": 5,
+        "importPath": "tests.serve",
+        "description": "tests.serve",
+        "peekOfCode": "required_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">\n<!-- Your existing index.html content -->\n''',\n    'css/style.css': '''/* Your existing CSS content */\n''',\n    'js/main.js': '''// Your existing JavaScript content */\n'''\n}",
+        "detail": "tests.serve",
+        "documentation": {}
+    },
+    {
+        "label": "Handler",
+        "kind": 5,
+        "importPath": "tests.serve",
+        "description": "tests.serve",
+        "peekOfCode": "Handler = http.server.SimpleHTTPRequestHandler\nwith socketserver.TCPServer((\"\", PORT), Handler) as httpd:\n    print(f\"Serving at http://localhost:{PORT}\")\n    # Open the default web browser\n    webbrowser.open(f'http://localhost:{PORT}')\n    # Start the server\n    try:\n        httpd.serve_forever()\n    except KeyboardInterrupt:\n        print(\"\\nServer stopped by user\")",
+        "detail": "tests.serve",
+        "documentation": {}
+    }
+]
