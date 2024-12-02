@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 # Configuration
-PORT = 8080
+PORT = 8085
 DIRECTORY = Path(__file__).parent
 
 # Create required directories if they don't exist
@@ -44,4 +44,4 @@ with socketserver.TCPServer(("", PORT), Handler) as httpd:
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\nServer stopped by user") 
+        print("\nServer stopped by user")

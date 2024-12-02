@@ -48,7 +48,7 @@
         "kind": 5,
         "importPath": "tests.serve",
         "description": "tests.serve",
-        "peekOfCode": "PORT = 8080\nDIRECTORY = Path(__file__).parent\n# Create required directories if they don't exist\nrequired_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">",
+        "peekOfCode": "PORT = 8085\nDIRECTORY = Path(__file__).parent\n# Create required directories if they don't exist\nrequired_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">",
         "detail": "tests.serve",
         "documentation": {}
     },
