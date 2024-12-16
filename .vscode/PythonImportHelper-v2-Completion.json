@@ -1,5 +1,114 @@
 [
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "markdown",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "markdown",
+        "description": "markdown",
+        "detail": "markdown",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Template",
+        "importPath": "jinja2",
+        "description": "jinja2",
+        "isExtraImport": true,
+        "detail": "jinja2",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageDraw",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageFont",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "http.server",
         "kind": 6,
         "isExtraImport": true,
@@ -27,65 +136,165 @@
         "documentation": {}
     },
     {
-        "label": "os",
+        "label": "socket",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
         "documentation": {}
     },
     {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
+        "label": "get_changed_posts",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def get_changed_posts():\n    \"\"\"Get list of markdown files that have been modified in the posts directory.\"\"\"\n    try:\n        # Get modified and untracked files\n        modified = subprocess.check_output(['git', 'ls-files', '-m', 'posts/'], text=True).splitlines()\n        untracked = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard', 'posts/'], text=True).splitlines()\n        # Combine and filter for markdown files\n        changed_files = set(modified + untracked)\n        return [f for f in changed_files if f.endswith('.md')]\n    except subprocess.CalledProcessError:",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "read_markdown_file",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def read_markdown_file(file_path):\n    \"\"\"Read a markdown file and extract frontmatter and content.\"\"\"\n    with open(file_path, 'r') as f:\n        content = f.read()\n    # Split frontmatter and markdown content\n    _, frontmatter, markdown_content = content.split('---', 2)\n    metadata = yaml.safe_load(frontmatter)\n    # Convert date format if needed\n    if 'date' in metadata:\n        try:",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "convert_markdown_to_html",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def convert_markdown_to_html(markdown_content):\n    \"\"\"Convert markdown content to HTML.\"\"\"\n    md = markdown.Markdown(extensions=['meta', 'fenced_code', 'codehilite', 'tables', 'attr_list', 'md_in_html'])\n    return md.convert(markdown_content)\ndef generate_blog_post_html(metadata, html_content, prev_post=None, next_post=None):\n    \"\"\"Generate HTML for a single blog post.\"\"\"\n    template = \"\"\"\n    <!DOCTYPE html>\n    <html lang=\"en\">\n    <head>",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "generate_blog_post_html",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def generate_blog_post_html(metadata, html_content, prev_post=None, next_post=None):\n    \"\"\"Generate HTML for a single blog post.\"\"\"\n    template = \"\"\"\n    <!DOCTYPE html>\n    <html lang=\"en\">\n    <head>\n        <!-- Google tag (gtag.js) -->\n        <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-GYJRB0KS1S\"></script>\n        <script>\n            window.dataLayer = window.dataLayer || [];",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_posts_metadata",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def get_all_posts_metadata():\n    \"\"\"Get metadata for all existing posts.\"\"\"\n    posts_metadata = []\n    for md_file in Path('posts').glob('*.md'):\n        metadata, _ = read_markdown_file(md_file)\n        metadata['url'] = f'blog/{md_file.stem}.html'\n        posts_metadata.append(metadata)\n    return posts_metadata\ndef update_blog_listing(posts_metadata):\n    \"\"\"Update the main blog listing page.\"\"\"",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "update_blog_listing",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def update_blog_listing(posts_metadata):\n    \"\"\"Update the main blog listing page.\"\"\"\n    template = \"\"\"\n    <!DOCTYPE html>\n    <html lang=\"en\">\n    <head>\n        <!-- Google tag (gtag.js) -->\n        <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-GYJRB0KS1S\"></script>\n        <script>\n            window.dataLayer = window.dataLayer || [];",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "get_series_order",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def get_series_order(metadata):\n    \"\"\"Get the order for series posts.\"\"\"\n    title = metadata.get('title', '').lower()\n    try:\n        # Extract part number if it exists\n        if 'part' in title:\n            part = int(''.join(filter(str.isdigit, title.split('part')[-1])))\n            return part\n        return float('inf')  # Non-series posts go last\n    except (ValueError, IndexError):",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.blog_generator",
+        "description": "scripts.blog_generator",
+        "peekOfCode": "def main():\n    # Create necessary directories\n    blog_posts_dir = Path('blog')\n    blog_posts_dir.mkdir(exist_ok=True)\n    # Get changed posts\n    changed_posts = get_changed_posts()\n    if not changed_posts:\n        print(\"No changes detected in posts directory.\")\n        return\n    print(f\"Processing {len(changed_posts)} changed posts:\")",
+        "detail": "scripts.blog_generator",
+        "documentation": {}
+    },
+    {
+        "label": "create_gradient_image",
+        "kind": 2,
+        "importPath": "scripts.generate_blog_images",
+        "description": "scripts.generate_blog_images",
+        "peekOfCode": "def create_gradient_image(width, height, color1, color2):\n    \"\"\"Create a gradient background.\"\"\"\n    image = Image.new('RGB', (width, height))\n    draw = ImageDraw.Draw(image)\n    for y in range(height):\n        r = int(color1[0] * (1 - y/height) + color2[0] * (y/height))\n        g = int(color1[1] * (1 - y/height) + color2[1] * (y/height))\n        b = int(color1[2] * (1 - y/height) + color2[2] * (y/height))\n        draw.line([(0, y), (width, y)], fill=(r, g, b))\n    return image",
+        "detail": "scripts.generate_blog_images",
+        "documentation": {}
+    },
+    {
+        "label": "add_data_elements",
+        "kind": 2,
+        "importPath": "scripts.generate_blog_images",
+        "description": "scripts.generate_blog_images",
+        "peekOfCode": "def add_data_elements(image):\n    \"\"\"Add data visualization elements to the image.\"\"\"\n    draw = ImageDraw.Draw(image)\n    # Add scatter plot points\n    for _ in range(20):\n        x = random.randint(50, 250)\n        y = random.randint(50, 350)\n        size = random.randint(4, 8)\n        draw.ellipse([x-size, y-size, x+size, y+size], fill='white', outline='white')\n    # Add bar chart",
+        "detail": "scripts.generate_blog_images",
+        "documentation": {}
+    },
+    {
+        "label": "add_text",
+        "kind": 2,
+        "importPath": "scripts.generate_blog_images",
+        "description": "scripts.generate_blog_images",
+        "peekOfCode": "def add_text(image, title, subtitle):\n    \"\"\"Add text to the image.\"\"\"\n    draw = ImageDraw.Draw(image)\n    # Try to use a nice font, fallback to default if not available\n    try:\n        title_font = ImageFont.truetype(\"/System/Library/Fonts/Helvetica.ttc\", 60)\n        subtitle_font = ImageFont.truetype(\"/System/Library/Fonts/Helvetica.ttc\", 40)\n    except:\n        title_font = ImageFont.load_default()\n        subtitle_font = ImageFont.load_default()",
+        "detail": "scripts.generate_blog_images",
+        "documentation": {}
+    },
+    {
+        "label": "create_blog_images",
+        "kind": 2,
+        "importPath": "scripts.generate_blog_images",
+        "description": "scripts.generate_blog_images",
+        "peekOfCode": "def create_blog_images():\n    \"\"\"Create images for all blog posts.\"\"\"\n    # Ensure images directory exists\n    Path('images').mkdir(exist_ok=True)\n    # Image configurations\n    configs = [\n        {\n            'filename': 'ml-oops-part3.jpg',\n            'color1': (79, 70, 229),  # Indigo-600\n            'color2': (129, 140, 248),  # Indigo-400",
+        "detail": "scripts.generate_blog_images",
+        "documentation": {}
+    },
+    {
+        "label": "find_free_port",
+        "kind": 2,
+        "importPath": "scripts.serve",
+        "description": "scripts.serve",
+        "peekOfCode": "def find_free_port(start_port=8086, max_attempts=100):\n    for port in range(start_port, start_port + max_attempts):\n        try:\n            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:\n                s.bind(('', port))\n                return port\n        except OSError:\n            continue\n    raise OSError(\"Could not find a free port\")\n# Configuration",
+        "detail": "scripts.serve",
         "documentation": {}
     },
     {
         "label": "PORT",
         "kind": 5,
-        "importPath": "tests.serve",
-        "description": "tests.serve",
-        "peekOfCode": "PORT = 8085\nDIRECTORY = Path(__file__).parent\n# Create required directories if they don't exist\nrequired_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">",
-        "detail": "tests.serve",
+        "importPath": "scripts.serve",
+        "description": "scripts.serve",
+        "peekOfCode": "PORT = find_free_port()\n# Get the root directory (one level up from tests)\nROOT_DIR = Path(__file__).parent.parent.absolute()\n# Change directory to the root directory where index.html is located\nos.chdir(ROOT_DIR)\nprint(f\"Serving files from: {ROOT_DIR}\")\n# Set up the server\nHandler = http.server.SimpleHTTPRequestHandler\nsocketserver.TCPServer.allow_reuse_address = True  # Allow port reuse\nwith socketserver.TCPServer((\"\", PORT), Handler) as httpd:",
+        "detail": "scripts.serve",
         "documentation": {}
     },
     {
-        "label": "DIRECTORY",
+        "label": "ROOT_DIR",
         "kind": 5,
-        "importPath": "tests.serve",
-        "description": "tests.serve",
-        "peekOfCode": "DIRECTORY = Path(__file__).parent\n# Create required directories if they don't exist\nrequired_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">\n<!-- Your existing index.html content -->",
-        "detail": "tests.serve",
-        "documentation": {}
-    },
-    {
-        "label": "required_dirs",
-        "kind": 5,
-        "importPath": "tests.serve",
-        "description": "tests.serve",
-        "peekOfCode": "required_dirs = ['css', 'js', 'images']\nfor dir_name in required_dirs:\n    Path(dir_name).mkdir(exist_ok=True)\n# Check if required files exist, create them if they don't\nrequired_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">\n<!-- Your existing index.html content -->\n''',\n    'css/style.css': '''/* Your existing CSS content */",
-        "detail": "tests.serve",
-        "documentation": {}
-    },
-    {
-        "label": "required_files",
-        "kind": 5,
-        "importPath": "tests.serve",
-        "description": "tests.serve",
-        "peekOfCode": "required_files = {\n    'index.html': '''<!DOCTYPE html>\n<html lang=\"en\">\n<!-- Your existing index.html content -->\n''',\n    'css/style.css': '''/* Your existing CSS content */\n''',\n    'js/main.js': '''// Your existing JavaScript content */\n'''\n}",
-        "detail": "tests.serve",
+        "importPath": "scripts.serve",
+        "description": "scripts.serve",
+        "peekOfCode": "ROOT_DIR = Path(__file__).parent.parent.absolute()\n# Change directory to the root directory where index.html is located\nos.chdir(ROOT_DIR)\nprint(f\"Serving files from: {ROOT_DIR}\")\n# Set up the server\nHandler = http.server.SimpleHTTPRequestHandler\nsocketserver.TCPServer.allow_reuse_address = True  # Allow port reuse\nwith socketserver.TCPServer((\"\", PORT), Handler) as httpd:\n    print(f\"Server started at http://localhost:{PORT}\")\n    # Open the default web browser",
+        "detail": "scripts.serve",
         "documentation": {}
     },
     {
         "label": "Handler",
         "kind": 5,
-        "importPath": "tests.serve",
-        "description": "tests.serve",
-        "peekOfCode": "Handler = http.server.SimpleHTTPRequestHandler\nwith socketserver.TCPServer((\"\", PORT), Handler) as httpd:\n    print(f\"Serving at http://localhost:{PORT}\")\n    # Open the default web browser\n    webbrowser.open(f'http://localhost:{PORT}')\n    # Start the server\n    try:\n        httpd.serve_forever()\n    except KeyboardInterrupt:\n        print(\"\\nServer stopped by user\")",
-        "detail": "tests.serve",
+        "importPath": "scripts.serve",
+        "description": "scripts.serve",
+        "peekOfCode": "Handler = http.server.SimpleHTTPRequestHandler\nsocketserver.TCPServer.allow_reuse_address = True  # Allow port reuse\nwith socketserver.TCPServer((\"\", PORT), Handler) as httpd:\n    print(f\"Server started at http://localhost:{PORT}\")\n    # Open the default web browser\n    webbrowser.open(f'http://localhost:{PORT}')\n    # Start the server\n    try:\n        httpd.serve_forever()\n    except KeyboardInterrupt:",
+        "detail": "scripts.serve",
+        "documentation": {}
+    },
+    {
+        "label": "socketserver.TCPServer.allow_reuse_address",
+        "kind": 5,
+        "importPath": "scripts.serve",
+        "description": "scripts.serve",
+        "peekOfCode": "socketserver.TCPServer.allow_reuse_address = True  # Allow port reuse\nwith socketserver.TCPServer((\"\", PORT), Handler) as httpd:\n    print(f\"Server started at http://localhost:{PORT}\")\n    # Open the default web browser\n    webbrowser.open(f'http://localhost:{PORT}')\n    # Start the server\n    try:\n        httpd.serve_forever()\n    except KeyboardInterrupt:\n        print(\"\\nServer stopped by user\")",
+        "detail": "scripts.serve",
         "documentation": {}
     }
 ]
