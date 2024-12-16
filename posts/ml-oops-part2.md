@@ -4,7 +4,7 @@ date: "March 22 2021"
 authors: ["Atul Dhingra", "Gaurav Sood"]
 tags: ["Machine Learning", "MLOps", "Edge Computing", "Model Deployment"]
 image: "images/ml-oops-part2.jpg"
-excerpt: "The first part of the series, “Improving and Deploying On-Device Models With Confidence,” is posted [here](empty)"
+excerpt: "The first part of the series, “Improving and Deploying On-Device Models With Confidence,” is posted [here](/blog/ml-oops-part1.html)"
 ---
 
 # ML (O)Ops! Keeping Track of Changes (Part 2)
