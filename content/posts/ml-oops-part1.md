@@ -1,17 +1,13 @@
 ---
 title: "ML (O)Ops! Improving and Deploying On-Device Models With Confidence (Part 1)"
-date: "February 21 2021"
+date: 2021-02-21
 authors: ["Atul Dhingra", "Gaurav Sood"]
 tags: ["Machine Learning", "MLOps", "Edge Computing", "Model Deployment"]
-image: "images/ml-oops-part1.jpg"
-excerpt: "Part 1 of a multi-part series exploring the challenges and solutions in deploying ML models on edge devices."
+series: ["ML (O)Ops"]
+series_order: 1
+description: "Part 1 of a multi-part series exploring the challenges and solutions in deploying ML models on edge devices."
 ---
-
-# ML (O)Ops! Improving and Deploying On-Device Models With Confidence (Part 1)
-
-*By Atul Dhingra and Gaurav Sood*
-
-Part 1 of a multi-part series.
+**With Gaurav Sood**
 
 It is well known that ML Engineers today spend most of their time doing things that do not have a lot to do with machine learning. They spend time working on technically unsophisticated but important things like deployment of models, keeping track of experiments, etc.—operations. Atul and I dive into the reasons behind the status quo and propose solutions, starting with issues to do with on-device deployments. 
 

@@ -1,0 +1,107 @@
+baseURL = 'https://dhingratul.github.io/'
+languageCode = 'en-us'
+title = 'Atul Dhingra'
+theme = 'PaperMod'
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[params]
+env = "production"
+title = "Atul Dhingra"
+description = "Technical Leader in Generative AI, Computer Vision, and Edge AI"
+keywords = ["Blog", "Portfolio", "Machine Learning", "AI"]
+author = "Atul Dhingra"
+DateFormat = "January 2, 2006"
+defaultTheme = "auto"
+disableThemeToggle = false
+ShowReadingTime = false
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = false
+ShowCodeCopyButtons = true
+ShowToc = false
+hideFooter = true
+ShowAuthor = false
+ShowWordCount = false
+ShowRssButtonInSectionTermList = false
+ShowPostMeta = false
+displayFullLangName = false
+
+  [params.profileMode]
+  enabled = true
+  title = "Atul Dhingra"
+  subtitle = "Builder, Leader, and Innovator"
+  imageUrl = "/images/abstract_dp.jpeg"
+  imageTitle = "Abstract Profile"
+  imageWidth = 240
+  imageHeight = 240
+
+    [[params.profileMode.buttons]]
+    name = "Blog"
+    url = "/posts"
+
+    [[params.profileMode.buttons]]
+    name = "About"
+    url = "/about"
+
+  [params.homeInfoParams]
+  Title = "Technical Leader in AI"
+  Content = "Building and deploying AI solutions at scale"
+
+  [[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/dhingratul"
+
+  [[params.socialIcons]]
+  name = "linkedin"
+  url = "https://linkedin.com/in/dhingratul"
+
+[menu]
+  [[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 10
+
+  [[menu.main]]
+  identifier = "experience"
+  name = "Experience"
+  url = "/experience/"
+  weight = 20
+
+  [[menu.main]]
+  identifier = "publications"
+  name = "Publications"
+  url = "/publications/"
+  weight = 30
+
+  [[menu.main]]
+  identifier = "patents"
+  name = "Patents"
+  url = "/patents/"
+  weight = 40
+
+  [[menu.main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/posts/"
+  weight = 50
+
+  [[menu.main]]
+  identifier = "contact"
+  name = "Contact"
+  url = "/contact/"
+  weight = 60
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[languages]
+  [languages.en]
+    [languages.en.params]
+      [languages.en.params.label]
+        posts = "Blog"
