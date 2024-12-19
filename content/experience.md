@@ -5,7 +5,7 @@ summary: "Professional Experience"
 layout: "experience"
 ---
 
-<div class="experience-card">
+<div class="card">
 
 ## Staff Machine Learning Engineer
 ### PayPal, San Jose, CA
