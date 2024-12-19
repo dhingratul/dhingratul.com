@@ -29,42 +29,35 @@ ShowWordCount = false
 ShowRssButtonInSectionTermList = false
 ShowPostMeta = false
 displayFullLangName = false
-ShowPrevNextInSections = true
 
-[params.cover]
-linkFullImages = true
+  [params.profileMode]
+  enabled = true
+  title = "Atul Dhingra"
+  subtitle = "Builder, Leader, and Innovator"
+  imageUrl = "/images/abstract_dp.jpeg"
+  imageTitle = "Abstract Profile"
+  imageWidth = 240
+  imageHeight = 240
 
-[params.assets]
-disableHLJS = true
+    [[params.profileMode.buttons]]
+    name = "Blog"
+    url = "/posts"
 
-[params.profileMode]
-enabled = true
-title = "Atul Dhingra"
-subtitle = "Builder, Leader, and Innovator"
-imageUrl = "/images/abstract_dp.jpeg"
-imageTitle = "Abstract Profile"
-imageWidth = 240
-imageHeight = 240
+    [[params.profileMode.buttons]]
+    name = "About"
+    url = "/about"
 
-  [[params.profileMode.buttons]]
-  name = "Blog"
-  url = "/posts"
+  [params.homeInfoParams]
+  Title = "Technical Leader in AI"
+  Content = "Building and deploying AI solutions at scale"
 
-  [[params.profileMode.buttons]]
-  name = "About"
-  url = "/about"
+  [[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/dhingratul"
 
-[params.homeInfoParams]
-Title = "Technical Leader in AI"
-Content = "Building and deploying AI solutions at scale"
-
-[[params.socialIcons]]
-name = "github"
-url = "https://github.com/dhingratul"
-
-[[params.socialIcons]]
-name = "linkedin"
-url = "https://linkedin.com/in/dhingratul"
+  [[params.socialIcons]]
+  name = "linkedin"
+  url = "https://linkedin.com/in/dhingratul"
 
 [menu]
   [[menu.main]]

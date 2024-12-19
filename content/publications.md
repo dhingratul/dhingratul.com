@@ -4,6 +4,8 @@ url: "/publications/"
 summary: "Academic Publications"
 ---
 
+## Journal Articles and Conference Papers
+
 1. **Instate: Predicting the State of Residence From Last Name**
    Atul Dhingra, G Sood
    *Machine Learning with Applications, Elsevier (Under Review)*

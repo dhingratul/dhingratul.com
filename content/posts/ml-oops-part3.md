@@ -6,7 +6,6 @@ tags: ["Machine Learning", "MLOps", "Data Collection", "Monitoring"]
 series: ["ML (O)Ops"]
 series_order: 3
 description: "Part 3 of our series on ML Operations, focusing on what data to collect for effective ML system monitoring."
-draft: false
 ---
 **With Gaurav Sood**
 
