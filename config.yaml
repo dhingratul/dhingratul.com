@@ -1,0 +1,41 @@
+baseURL: "https://yourdomain.com/"
+languageCode: "en-us"
+title: "Your Site Title"
+
+# Important build settings
+build:
+  writeStats: true
+  
+# Configure content directory
+contentDir: "content"
+layoutDir: "layouts"
+
+# Configure asset pipeline
+assets:
+  disableHMR: true
+
+# Configure permalinks
+permalinks:
+  posts: "/posts/:slug/"
+
+# Configure markup
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# Configure menus
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 1
+    - identifier: blog
+      name: Blog
+      url: /posts/
+      weight: 2
+    - identifier: experience
+      name: Experience
+      url: /experience/
+      weight: 3 

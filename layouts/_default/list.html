@@ -1,0 +1,37 @@
+{{ define "main" }}
+<main class="container">
+    <section>
+        <h1>{{ .Title }}</h1>
+        
+        {{ with .Content }}
+            <div class="section-content">
+                {{ . }}
+            </div>
+        {{ end }}
+
+        <div class="card-grid">
+            {{ range .Pages }}
+            <article class="card blog-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h2>
+                    <div class="card-meta">
+                        {{ .Date.Format "January 2, 2006" }}
+                        {{ with .Params.categories }}
+                        • {{ delimit . ", " }}
+                        {{ end }}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>{{ .Summary }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ .RelPermalink }}" class="button">Read More</a>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </section>
+</main>
+{{ end }} 

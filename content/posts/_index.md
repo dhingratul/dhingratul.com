@@ -1,4 +1,4 @@
 ---
-title: "Blog"
-description: "Technical insights and experiences in AI, ML, and Engineering"
+title: "Blog Posts"
+description: "Latest articles and insights"
 --- 
