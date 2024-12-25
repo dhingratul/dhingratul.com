@@ -1,0 +1,42 @@
+baseURL: "https://dhingratul.com/"
+languageCode: "en-us"
+title: "Utkarsh Dhingra"
+theme: "PaperMod"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production
+  title: "Utkarsh Dhingra"
+  description: "Technical insights and experiences in AI, ML, and Engineering"
+  keywords: [Blog, Portfolio, AI, ML, Engineering]
+  author: "Utkarsh Dhingra"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: false
+  
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: blog
+      name: Blog
+      url: /posts/
+      weight: 20
+    - identifier: experience
+      name: Experience
+      url: /experience/
+      weight: 30 
