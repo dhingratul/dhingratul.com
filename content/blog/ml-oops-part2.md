@@ -6,6 +6,7 @@ tags: ["Machine Learning", "MLOps", "Version Control", "Model Management"]
 series: ["ML (O)Ops"]
 series_order: 2
 description: "Part 2 of our series on ML Operations, focusing on tracking changes in ML systems."
+aliases: ["/posts/ml-oops-part2"]
 ---
 **With Gaurav Sood**
 

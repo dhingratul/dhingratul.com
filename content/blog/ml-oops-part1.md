@@ -6,6 +6,7 @@ tags: ["Machine Learning", "MLOps", "Edge Computing", "Model Deployment"]
 series: ["ML (O)Ops"]
 series_order: 1
 description: "Part 1 of a multi-part series exploring the challenges and solutions in deploying ML models on edge devices."
+aliases: ["/posts/ml-oops-part1/"]
 ---
 **With Gaurav Sood**
 

@@ -12,6 +12,9 @@ minify:
   disableXML: true
   minifyOutput: true
 
+permalinks:
+  blog: "/blog/:slug/"
+
 params:
   env: production
   title: "Utkarsh Dhingra"
@@ -34,7 +37,7 @@ menu:
       weight: 10
     - identifier: blog
       name: Blog
-      url: /posts/
+      url: /blog/
       weight: 20
     - identifier: experience
       name: Experience
