@@ -1,6 +1,6 @@
 baseURL: "https://dhingratul.com/"
 languageCode: "en-us"
-title: "Utkarsh Dhingra"
+title: "Atul Dhingra"
 theme: "PaperMod"
 
 enableRobotsTXT: true
@@ -14,6 +14,13 @@ minify:
 
 permalinks:
   blog: "/blog/:slug/"
+  posts: "/posts/:slug/"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 params:
   env: production
