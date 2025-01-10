@@ -73,28 +73,22 @@ displayFullLangName = false
   weight = 20
 
   [[menu.main]]
-  identifier = "publications"
-  name = "Publications"
-  url = "/publications/"
+  identifier = "innovations"
+  name = "Innovations"
+  url = "/innovations/"
   weight = 30
-
-  [[menu.main]]
-  identifier = "patents"
-  name = "Patents"
-  url = "/patents/"
-  weight = 40
 
   [[menu.main]]
   identifier = "blog"
   name = "Blog"
   url = "/posts/"
-  weight = 50
+  weight = 40
 
   [[menu.main]]
   identifier = "contact"
   name = "Contact"
   url = "/contact/"
-  weight = 60
+  weight = 50
 
 [taxonomies]
   tag = "tags"
