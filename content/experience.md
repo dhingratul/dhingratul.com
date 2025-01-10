@@ -10,6 +10,7 @@ summary: "Professional Experience"
 - Spearheaded the implementation of Generative AI tools and technologies at PayPal, prioritizing safety, security, and responsible AI to enhance internal and external processes and workflows.
 - Demonstrated a 30% increase in developer productivity and projected an annual savings of $1M through successful Proof of Concepts (PoCs) in SWE and ML development, influencing strategic decisions on build versus buy solutions.
 - Established end-to-end lifecycle for Open Source Coding LLMs, including dataset management, finetuning, RAG, and evaluation harness for improving developer productivity for SWEs and Data Scientists.
+---
 
 ## Engineering Manager, Machine Learning
 *Standard Cognition, San Francisco, CA | Nov '19 - May '23*
@@ -24,6 +25,8 @@ summary: "Professional Experience"
 - Demonstrated proactive leadership in managing team culture, including the hiring process, onboarding engineers and interns, and ensuring the career growth of direct reports.
 - Defined the team's short-term and long-term strategy, built the team's roadmap, success metrics, and priorities, and translated them into engineering goals for the team.
 
+---
+
 ## Perception Engineer
 *NIO, San Jose, CA | March '18 - Nov '19*
 
@@ -33,12 +36,14 @@ summary: "Professional Experience"
 - Designed and led the creation of a low-level library for Inference on Edge with custom operation support for running deep learning models on various hardware accelerators.
 - Mentored Sr Perception Engineers and interns to develop software for deploying multiple DNN models concurrently on the embedded target platforms.
 
+---
 ## Machine Learning Engineer
 *Otsuka Digital Health, Princeton, NJ | July '17 - March '18*
 
 - Improved short-term cost prediction for medical claims data by 90% using Deep Learning(LSTM) as a proxy for ordering patients for better medical care.
 - Designed and implemented various Deep Learning and advanced ML algorithms including new predictive models, and new ways to describe and visualize medical claims data.
 
+---
 ## Graduate Research Assistant
 *Rutgers University, New Brunswick, NJ | July '16- June '17*
 
@@ -46,6 +51,7 @@ summary: "Professional Experience"
 - Developed and published a novel face recognition algorithm for aggregating visual features based on clustering in a multi-shot video-to-gallery template retrieval problem in an unconstrained environment.
 - Investigated the role of face data and attribute bias in automated photo-sketch generation.
 
+---
 ## Visiting Researcher
 *Indian Institute of Technology, Delhi, India | Dec '11 - July '15*
 

@@ -64,6 +64,10 @@ displayFullLangName = false
   name = "linkedin"
   url = "https://linkedin.com/in/dhingratul"
 
+  [[params.socialIcons]]
+  name = "googlescholar"
+  url = "https://scholar.google.co.in/citations?user=btYSrEcAAAAJ&hl"
+
 [menu]
   [[menu.main]]
   identifier = "about"
