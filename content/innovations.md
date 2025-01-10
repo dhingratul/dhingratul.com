@@ -27,6 +27,7 @@ aliases: ["/publications/", "/patents/", "/research/"]
    U.S. Application No. 17/988,650
    *Filed: November 16, 2022*
 
+---
 ## Journal Articles and Conference Papers
 
 1. **Instate: Predicting the State of Residence From Last Name**
@@ -52,6 +53,7 @@ aliases: ["/publications/", "/patents/", "/research/"]
    *SEMCCO 2013, Part II, LNCS(Springer) 8298*
    pp. 248-256, 2013
 
+---
 ## Datasets
 
 1. **Instate Corpus**
@@ -64,6 +66,7 @@ aliases: ["/publications/", "/patents/", "/research/"]
    *Harvard Dataverse*
    [doi.org/10.7910/DVN/OG47IV](https://doi.org/10.7910/DVN/OG47IV)
 
+---
 ## Blog Publications
 
 1. **ML (O)Ops! Part 1: Improving and Deploying On-Device Models With Confidence**

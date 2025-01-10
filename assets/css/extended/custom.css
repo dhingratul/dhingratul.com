@@ -242,3 +242,133 @@ th {
         font-size: 1rem;
     }
 } 
+
+/* Blog List Styling */
+.post-entry {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: var(--entry);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.entry-header h2 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.entry-content {
+    margin: 0.8rem 0;
+    color: var(--secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.entry-footer {
+    color: var(--secondary);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--secondary);
+    margin-top: 0.5rem;
+}
+
+.post-meta .post-author {
+    font-weight: 500;
+}
+
+.post-meta .post-date {
+    color: var(--secondary);
+}
+
+/* Blog List Container */
+.posts {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.first-entry {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+    margin: 0 0 2rem;
+    padding: 2rem;
+    background: var(--entry);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.first-entry .entry-header h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+}
+
+.first-entry .entry-content {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+}
+
+.first-entry .entry-footer {
+    font-size: 0.95rem;
+}
+
+/* Blog Page Title */
+.main .page-header {
+    margin-bottom: 2rem;
+}
+
+.main .page-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.main .page-header .page-description {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--secondary);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 500px) {
+    .post-entry {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .entry-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .first-entry {
+        min-height: 160px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .first-entry .entry-header h2 {
+        font-size: 1.6rem;
+    }
+} 

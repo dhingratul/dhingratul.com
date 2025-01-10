@@ -8,6 +8,11 @@ buildDrafts = false
 buildFuture = false
 buildExpired = false
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [params]
 env = "production"
 title = "Atul Dhingra"
@@ -41,7 +46,7 @@ displayFullLangName = false
 
     [[params.profileMode.buttons]]
     name = "Blog"
-    url = "/posts"
+    url = "/blog"
 
     [[params.profileMode.buttons]]
     name = "About"
@@ -81,7 +86,7 @@ displayFullLangName = false
   [[menu.main]]
   identifier = "blog"
   name = "Blog"
-  url = "/posts/"
+  url = "/blog/"
   weight = 40
 
   [[menu.main]]
