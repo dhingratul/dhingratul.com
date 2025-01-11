@@ -36,7 +36,4 @@ I'm particularly interested in discussing:
 <button type="submit" class="form-button">Send Message</button>
 </form>
 
-## Resume
-You can find my detailed resume [here](/resume/Resume.pdf)
-
 </div>

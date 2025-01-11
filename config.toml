@@ -29,10 +29,10 @@ ShowBreadCrumbs = false
 ShowCodeCopyButtons = true
 ShowToc = false
 hideFooter = true
-ShowAuthor = false
+ShowAuthor = true
 ShowWordCount = false
 ShowRssButtonInSectionTermList = false
-ShowPostMeta = false
+ShowPostMeta = true
 displayFullLangName = false
 
   [params.profileMode]
@@ -67,6 +67,10 @@ displayFullLangName = false
   [[params.socialIcons]]
   name = "googlescholar"
   url = "https://scholar.google.co.in/citations?user=btYSrEcAAAAJ&hl"
+
+  [[params.socialIcons]]
+  name = "cv"
+  url = "/resume/Resume.pdf"
 
 [menu]
   [[menu.main]]
@@ -108,3 +112,16 @@ displayFullLangName = false
     [languages.en.params]
       [languages.en.params.label]
         posts = "Blog"
+
+[params.page]
+  [params.page.list]
+    showSummary = true
+    hideMeta = false
+    dateFormat = "January 2, 2006"
+
+  [params.page.meta]
+    author = true
+    date = false
+    readingTime = false
+    words = false
+    draft = false
