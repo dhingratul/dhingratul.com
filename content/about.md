@@ -14,8 +14,10 @@ Atul is a Technical Leader specializing in Generative AI, Computer Vision, and E
 * Independently designed and selected Edge compute for a fully autonomous (L4) platform at NIO, laying the foundation for the Adam supercomputer.
 ---
 ## Areas of Expertise
-
-- **Generative AI**: Development and deployment of large language models and generative systems
-- **Computer Vision**: Deep learning applications in visual recognition and processing
-- **Edge AI**: Optimization and deployment of ML models on edge devices
-- **MLOps**: Building robust ML pipelines and deployment systems
+- **Generative AI**: Development, deployment, and fine-tuning of large language models and generative systems for diverse applications
+- **Computer Vision**: Deep learning solutions for visual recognition, scene understanding, and object detection
+- **Edge AI**: Optimization, deployment, and inference of ML models on edge devices with hardware constraints
+- **Autonomous Systems**: Development of perception algorithms for autonomous platforms
+- **Retail Analytics**: Creation of trajectory-based and visual feature-based analytics solutions to enhance operational efficiency and user engagement
+- **ML Infrastructure**: Architecting scalable systems for automated training, deployment, and management of machine learning models
+- **Leadership & Strategy**: Team building, mentorship, roadmap planning, and driving cross-functional collaboration for AI and ML projects
