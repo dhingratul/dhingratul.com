@@ -1,3 +1,87 @@
+/* Color Theme Overrides */
+:root {
+    --primary: #2d96bd;  /* Softer blue for primary elements */
+    --secondary: #718096; /* Muted gray for secondary text */
+    --tertiary: #4a5568;  /* Darker gray for subtle elements */
+    --content: #2d3748;   /* Dark gray for main content */
+    --border: #e2e8f0;    /* Light gray for borders */
+    --entry: rgba(45, 55, 72, 0.03); /* Very subtle background for cards */
+}
+
+[theme="dark"] {
+    --primary: #88ccff;   /* Brighter blue for dark mode */
+    --secondary: #a0aec0; /* Medium gray for secondary text */
+    --tertiary: #cbd5e0;  /* Light gray for subtle elements */
+    --content: #e2e8f0;   /* Light gray for main content */
+    --border: #4a5568;    /* Medium-dark gray for borders */
+    --entry: #2d3748;     /* Dark blue-gray for cards */
+    --theme: #1a202c;     /* Darker background */
+}
+
+/* Dark Mode Specific Adjustments */
+[theme="dark"] body {
+    background-color: var(--theme);
+    color: var(--content);
+}
+
+[theme="dark"] .post-entry {
+    background: var(--entry);
+    border-color: var(--border);
+}
+
+[theme="dark"] .contact-form {
+    background: var(--entry);
+    border: 1px solid var(--border);
+}
+
+[theme="dark"] .form-input {
+    background: var(--theme);
+    border: 1px solid var(--border);
+    color: var(--content);
+}
+
+[theme="dark"] .form-label {
+    color: var(--content);
+}
+
+[theme="dark"] .form-button {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+[theme="dark"] .post-content {
+    color: var(--content);
+}
+
+[theme="dark"] .entry-content {
+    color: var(--content);
+}
+
+[theme="dark"] .first-entry {
+    background: var(--entry);
+    border-color: var(--border);
+}
+
+[theme="dark"] .button {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+[theme="dark"] pre {
+    background: var(--theme) !important;
+    border-color: var(--border);
+}
+
+[theme="dark"] code {
+    color: var(--primary);
+    background: rgba(136, 204, 255, 0.1);
+}
+
+[theme="dark"] blockquote {
+    background: var(--entry);
+    border-left: 4px solid var(--primary);
+}
+
 /* Global Container Width */
 .main {
     max-width: 600px !important;
@@ -80,14 +164,21 @@
 /* Content Styling */
 .post-content {
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    color: var(--content);
 }
 
-.post-content h2 {
-    font-size: 1.8rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
+.post-content h1, .post-content h2, .post-content h3, .post-content h4 {
     color: var(--primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+}
+
+.post-content p {
+    margin: 1.2em 0;
+    color: var(--content);
 }
 
 .post-content ul {
@@ -98,8 +189,9 @@
 .post-content ul li {
     position: relative;
     padding-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8em;
     line-height: 1.6;
+    color: var(--content);
 }
 
 .post-content ul li::before {
@@ -199,7 +291,7 @@ h4 { font-size: 1.5rem; }
 .post-content a {
     color: var(--primary);
     text-decoration: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid rgba(45, 150, 189, 0.2);
     transition: border-color 0.3s ease;
 }
 
@@ -288,12 +380,17 @@ pre {
     padding: 1.2em;
     border-radius: 8px;
     margin: 1.2em 0;
+    background: var(--entry) !important;
+    border: 1px solid var(--border);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 code {
     font-size: 0.9em;
     padding: 0.2em 0.4em;
     border-radius: 4px;
+    color: var(--primary);
+    background: rgba(45, 150, 189, 0.1);
 }
 
 /* Tables */
@@ -328,17 +425,20 @@ th {
     border-radius: 12px;
     border: 1px solid var(--border);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .post-entry:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
 }
 
 .entry-header h2 {
     font-size: 1.5rem;
     line-height: 1.4;
     margin: 0;
+    color: var(--primary);
 }
 
 .entry-content {
@@ -458,4 +558,32 @@ th {
 .contact-container {
     text-align: justify;
     hyphens: auto;
+}
+
+/* Button Styling */
+.form-button, .button {
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+.form-button:hover, .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 150, 189, 0.2);
+}
+
+/* Form Input Styling */
+.form-input {
+    background: var(--entry);
+    border: 2px solid var(--border);
+    color: var(--content);
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(45, 150, 189, 0.1);
 } 
