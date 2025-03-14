@@ -38,7 +38,7 @@ displayFullLangName = false
   [params.profileMode]
   enabled = true
   title = "Atul Dhingra"
-  subtitle = "I build AI systems for Vision, Language, and Autonomous systems 🧠🤖✨"
+  subtitle = "I build AI systems for Vision, Language, and Autonomous systems."
   imageUrl = "/images/abstract_dp.jpeg"
   imageTitle = "Atul Dhingra"
   imageWidth = 200
