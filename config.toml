@@ -38,11 +38,11 @@ displayFullLangName = false
   [params.profileMode]
   enabled = true
   title = "Atul Dhingra"
-  subtitle = "Builder, Leader, and Innovator"
+  subtitle = "I build AI systems for Vision, Language, and Autonomous systems."
   imageUrl = "/images/abstract_dp.jpeg"
-  imageTitle = "Abstract Profile"
-  imageWidth = 240
-  imageHeight = 240
+  imageTitle = "Atul Dhingra"
+  imageWidth = 200
+  imageHeight = 200
 
     [[params.profileMode.buttons]]
     name = "Blog"

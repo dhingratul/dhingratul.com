@@ -1,0 +1,11 @@
+{{- with .align }}
+<div class="social-icons align-{{ . }}">
+{{- else }}
+<div class="social-icons">
+{{- end }}
+    {{- range site.Params.socialIcons }}
+    <a href="{{ .url | markdownify }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}">
+        {{ partial "svg.html" . }}
+    </a>
+    {{- end }}
+</div> 
