@@ -1,0 +1,26 @@
+{{- /* Footer custom JavaScript */ -}}
+<script>
+  // Fix for links with template issues
+  document.addEventListener('DOMContentLoaded', function() {
+    // Find all links and check for potential Hugo template issues
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.includes('#ZgotmplZ')) {
+        // Extract the intended URL from the socialIcons configuration
+        const iconName = link.title ? link.title.toLowerCase() : '';
+        
+        // If it's a known social icon, replace with the correct URL
+        if (iconName === 'github') {
+          link.setAttribute('href', 'https://github.com/dhingratul');
+        } else if (iconName === 'linkedin') {
+          link.setAttribute('href', 'https://linkedin.com/in/dhingratul');
+        } else if (iconName === 'googlescholar') {
+          link.setAttribute('href', 'https://scholar.google.co.in/citations?user=btYSrEcAAAAJ&hl');
+        } else if (iconName === 'cv') {
+          link.setAttribute('href', '/resume/Resume.pdf');
+        }
+      }
+    });
+  });
+</script>

@@ -1,11 +1,8 @@
-{{- with .align }}
-<div class="social-icons align-{{ . }}">
-{{- else }}
-<div class="social-icons">
-{{- end }}
+{{- /* Social Icons */ -}}
+<div class="social-icons" {{ with .align}}align="{{.}}" {{- end }}>
     {{- range site.Params.socialIcons }}
-    <a href="{{ .url | markdownify }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}">
-        {{ partial "svg.html" . }}
+    <a href="{{ .url | safeURL }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}">
+        {{- partial "svg.html" . }}
     </a>
     {{- end }}
-</div> 
+</div>
