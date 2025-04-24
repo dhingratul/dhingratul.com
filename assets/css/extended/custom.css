@@ -1240,9 +1240,10 @@ th {
 }
 
 .timeline-logo {
-    position: absolute;
-    left: 1.5rem;
-    top: 1.5rem;
+    position: relative;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px;
     max-width: 50px;
     max-height: 50px;
     border-radius: 8px;
@@ -1253,6 +1254,8 @@ th {
     line-height: 1.5;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    margin-left: 0;
+    overflow: hidden;
 }
 
 .timeline-link {
@@ -1307,14 +1310,12 @@ body.dark .timeline-link {
     
     .timeline-content {
         padding: 1.2rem;
-        padding-left: 4rem;
     }
     
     .timeline-logo {
         max-width: 40px;
         max-height: 40px;
-        left: 1rem;
-        top: 1.2rem;
+        margin-right: 10px;
     }
 }
 
