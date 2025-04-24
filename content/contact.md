@@ -6,16 +6,17 @@ summary: "Get in touch"
 
 <div class="contact-container">
 
-I'm particularly interested in discussing:
-
+{{< project-card >}}
+## Areas of Interest:
 - AI/ML Research Collaborations
 - Technical Advisory Opportunities
 - Speaking Opportunities
 - Industry Partnerships
 - Mentoring Opportunities
+{{< /project-card >}}
 
+{{< project-card >}}
 ## Get in Touch
-
 <form action="https://formspree.io/f/mlddaggp" method="POST" class="contact-form">
 <div class="form-group">
 <label class="form-label" for="name">Name:</label>
@@ -35,5 +36,6 @@ I'm particularly interested in discussing:
 </div>
 <button type="submit" class="form-button">Send Message</button>
 </form>
+{{< /project-card >}}
 
 </div>

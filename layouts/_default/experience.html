@@ -6,4 +6,26 @@
 <!-- For logos with white backgrounds that need special handling -->
 <div class="company-logo">
     <img src="/images/company_logos/other_logo.png" alt="Company" class="light-bg">
-</div> 
+</div>
+
+{{- define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    {{- partial "breadcrumbs.html" . }}
+    <h1 class="post-title entry-hint-parent">
+      {{ .Title }}
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end }}
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+
+{{- end }}{{/* end main */}} 

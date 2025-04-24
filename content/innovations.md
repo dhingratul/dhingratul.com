@@ -5,6 +5,7 @@ summary: "Research & Innovations"
 aliases: ["/publications/", "/patents/", "/research/"]
 ---
 
+{{< project-card >}}
 ## Patents
 
 1. **One or more cameras for use in an autonomous checkout in a cashier-less shopping store and otherwise**
@@ -26,8 +27,9 @@ aliases: ["/publications/", "/patents/", "/research/"]
    Atul Dhingra, et al.
    U.S. Application No. 17/988,650
    *Filed: November 16, 2022*
+{{< /project-card >}}
 
----
+{{< project-card >}}
 ## Journal Articles and Conference Papers
 
 1. **Instate: Predicting the State of Residence From Last Name**
@@ -52,8 +54,9 @@ aliases: ["/publications/", "/patents/", "/research/"]
    Atul Dhingra, A Kumar, M. Hanmandlu, B.K Panigrahi
    *SEMCCO 2013, Part II, LNCS(Springer) 8298*
    pp. 248-256, 2013
+{{< /project-card >}}
 
----
+{{< project-card >}}
 ## Datasets
 
 1. **Instate Corpus**
@@ -65,8 +68,9 @@ aliases: ["/publications/", "/patents/", "/research/"]
    Atul Dhingra, G Sood
    *Harvard Dataverse*
    [doi.org/10.7910/DVN/OG47IV](https://doi.org/10.7910/DVN/OG47IV)
+{{< /project-card >}}
 
----
+{{< project-card >}}
 ## Blog Publications
 
 1. **ML (O)Ops! Part 1: Improving and Deploying On-Device Models With Confidence**
@@ -88,3 +92,4 @@ aliases: ["/publications/", "/patents/", "/research/"]
 5. **Building Together, Separately: Challenges of Software Development**
    Atul Dhingra, Gaurav Sood (2024)
    [Blog Post](/blog/microservices/)
+{{< /project-card >}}
