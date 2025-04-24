@@ -2,6 +2,7 @@ baseURL = 'https://www.dhingratul.com'
 languageCode = 'en-us'
 title = 'Atul Dhingra'
 theme = 'PaperMod'
+googleAnalytics = 'G-B5DGQSGMKX'
 
 enableRobotsTXT = true
 buildDrafts = false
