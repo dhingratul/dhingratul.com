@@ -11,6 +11,17 @@
         {{- end }}
         <h1>{{ .title | default site.Title }}</h1>
         <span>{{ .subtitle }}</span>
+        
+        <!-- Skills tags section -->
+        <div class="skills-container">
+            <div class="skill-tag"><i class="fa fa-brain"></i>Generative AI</div>
+            <div class="skill-tag"><i class="fa fa-eye"></i>Computer Vision</div>
+            <div class="skill-tag"><i class="fa fa-comment"></i>NLP</div>
+            <div class="skill-tag"><i class="fa fa-robot"></i>Autonomous Systems</div>
+            <div class="skill-tag"><i class="fa fa-microchip"></i>Edge Computing</div>
+            <div class="skill-tag"><i class="fa fa-cloud"></i>AI Infrastructure</div>
+        </div>
+        
         {{- partial "social_icons.html" . }}
 
         {{- with .buttons }}
