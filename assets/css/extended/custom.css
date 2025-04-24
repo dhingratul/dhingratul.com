@@ -1,27 +1,217 @@
-/* Color Theme Overrides */
+/* Modern Color Theme */
 :root {
-    --primary: #2d96bd;  /* Softer blue for primary elements */
-    --secondary: #718096; /* Muted gray for secondary text */
-    --tertiary: #4a5568;  /* Darker gray for subtle elements */
-    --content: #2d3748;   /* Dark gray for main content */
+    --primary: #3b82f6;  /* Bright blue for primary elements */
+    --secondary: #64748b; /* Slate gray for secondary text */
+    --tertiary: #475569;  /* Darker slate for subtle elements */
+    --content: #334155;   /* Dark slate for main content */
     --border: #e2e8f0;    /* Light gray for borders */
-    --entry: rgba(45, 55, 72, 0.03); /* Very subtle background for cards */
+    --entry: rgba(51, 65, 85, 0.03); /* Very subtle background for cards */
     --background: #ffffff; /* White background */
     --card-bg: #f8fafc;   /* Light background for cards */
-    --animation-duration: 0.5s; /* Animation duration */
+    --code-bg: #f1f5f9;   /* Light background for code blocks */
+    --animation-duration: 0.3s; /* Slightly faster animations */
     --theme: #ffffff;     /* Base background color */
+    
+    /* Typography */
+    --font-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --font-mono: "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+    --line-height: 1.6;
 }
 
 body.dark {
-    --primary: #88ccff;   /* Brighter blue for dark mode */
-    --secondary: #a0aec0; /* Medium gray for secondary text */
-    --tertiary: #cbd5e0;  /* Light gray for subtle elements */
-    --content: #e2e8f0;   /* Light gray for main content */
-    --border: #4a5568;    /* Medium-dark gray for borders */
-    --entry: #2d3748;     /* Dark blue-gray for cards */
-    --theme: #1a202c;     /* Darker background */
-    --background: #1a202c; /* Dark background */
-    --card-bg: #2d3748;   /* Dark background for cards */
+    --primary: #60a5fa;   /* Lighter blue for dark mode */
+    --secondary: #94a3b8; /* Medium slate gray for secondary text */
+    --tertiary: #cbd5e1;  /* Light slate for subtle elements */
+    --content: #e2e8f0;   /* Light slate for main content */
+    --border: #475569;    /* Medium-dark slate for borders */
+    --entry: #1e293b;     /* Darker blue-slate for cards */
+    --theme: #0f172a;     /* Darker background */
+    --background: #0f172a; /* Dark blue-slate background */
+    --card-bg: #1e293b;   /* Dark background for cards */
+    --code-bg: #334155;   /* Darker background for code blocks */
+}
+
+/* Apply new typography */
+body {
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height);
+    color: var(--content);
+    background-color: var(--background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    line-height: 1.3;
+}
+
+code, pre, kbd {
+    font-family: var(--font-mono);
+}
+
+/* Load Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Experience Cards with improved shadows and transitions */
+.experience-card,
+.project-card,
+.blog-card {
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.experience-card:hover,
+.project-card:hover,
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.experience-card h2,
+.project-card h2,
+.blog-card h2 {
+    margin-top: 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: var(--font-weight-bold);
+}
+
+.experience-card ul,
+.project-card ul,
+.blog-card ul {
+    padding-left: 20px;
+}
+
+.experience-card li,
+.project-card li,
+.blog-card li {
+    margin-bottom: 10px;
+}
+
+/* Button styling */
+.button,
+.form-button {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: var(--font-weight-medium);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover,
+.form-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    opacity: 0.9;
+}
+
+/* Form styles */
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--background);
+    color: var(--content);
+    font-family: var(--font-base);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: var(--font-weight-medium);
+    color: var(--content);
+}
+
+/* Links */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* Post content formatting */
+.post-content p,
+.entry-content p {
+    margin-bottom: 1.2rem;
+    line-height: var(--line-height);
+}
+
+.post-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--primary);
+}
+
+/* Blog entries */
+.post-entry .entry-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.post-entry:hover .entry-content {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Code blocks */
+pre {
+    background-color: var(--code-bg) !important;
+    border-radius: 8px;
+    padding: 1.2em;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    background-color: var(--code-bg);
+    color: var(--primary);
 }
 
 /* Explicit dark mode styles */
@@ -176,32 +366,6 @@ body.dark .post-entry {
     margin-bottom: 1.5rem;
 }
 
-.form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.form-input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    background: var(--theme);
-    color: var(--primary);
-}
-
-.form-button {
-    background-color: var(--primary);
-    color: var(--theme);
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 1rem;
-}
-
 .form-button:hover {
     opacity: 0.9;
 }
@@ -215,14 +379,6 @@ body.dark .post-entry {
     border-radius: 0;
     box-shadow: none;
     transition: none;
-}
-
-.post-title {
-    color: var(--primary);
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
 }
 
 .post-content h2 {
@@ -239,11 +395,6 @@ body.dark .post-entry {
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
     font-size: 1.5rem;
-}
-
-.post-content p {
-    margin-bottom: 1.2rem;
-    line-height: 1.7;
 }
 
 .post-content ul, .post-content ol {
@@ -645,24 +796,6 @@ h4 { font-size: 1.5rem; }
 .social-icons a:hover {
     transform: translateY(-3px);
     background: var(--primary);
-}
-
-/* Code Blocks */
-pre {
-    padding: 1.2em;
-    border-radius: 8px;
-    margin: 1.2em 0;
-    background: var(--entry) !important;
-    border: 1px solid var(--border);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-code {
-    font-size: 0.9em;
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-    color: var(--primary);
-    background: rgba(45, 150, 189, 0.1);
 }
 
 /* Tables */
