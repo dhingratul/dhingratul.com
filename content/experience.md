@@ -7,7 +7,7 @@ summary: "Professional Experience"
 {{< experience-card >}}
 ## Staff Machine Learning Engineer
 *PayPal, San Jose, CA | Jul '23 - Present*
-- **Generative AI Adoption**: Led the adoption of Generative AI at PayPal with a focus on safety and responsible AI, streamlining processes.
+- **Generative AI Adoption**: Leading a strategic R&D effort in Agentic Commerce at PayPal, leveraging LLMs and Reinforcement Learning to enable multi-turn conversational agents to drive long-horizon decision making.
 - **Developer Productivity**: Boosted developer productivity by 30% through successful PoCs in software and ML development, shaping strategic decisions.
 - **LLM Lifecycle**: Developed an end-to-end lifecycle for Open Source Coding LLMs, inclduing Finetuning, RAG, Agentic Workflows, Eval and Deployment
 {{< /experience-card >}}
