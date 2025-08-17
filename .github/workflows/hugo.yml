@@ -48,6 +48,15 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Pre-build maintenance check
+        run: |
+          # Quick CSS health check before building
+          CSS_LINES=$(wc -l < assets/css/extended/custom.css)
+          echo "📊 CSS lines: $CSS_LINES"
+          if [[ $CSS_LINES -gt 1500 ]]; then
+            echo "⚠️ CSS file is quite large ($CSS_LINES lines) - consider optimization"
+          fi
+
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -56,6 +65,10 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+          
+          # Post-build size check
+          BUILD_SIZE=$(du -sh public | cut -f1)
+          echo "📦 Build size: $BUILD_SIZE"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

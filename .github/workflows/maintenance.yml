@@ -1,0 +1,268 @@
+# Website Maintenance and Health Check Workflow
+name: Website Maintenance
+
+on:
+  # Run monthly on the first day of each month at 9 AM UTC
+  schedule:
+    - cron: '0 9 1 * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Run after successful deployments
+  workflow_run:
+    workflows: ["Deploy Hugo site to Pages"]
+    types: [completed]
+    branches: [main]
+
+# Allow one concurrent maintenance run
+concurrency:
+  group: "maintenance"
+  cancel-in-progress: true
+
+jobs:
+  maintenance:
+    name: Run Maintenance Checks
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name != 'workflow_run' }}
+    
+    env:
+      HUGO_VERSION: 0.146.7
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0  # Full history for theme update checks
+      
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      
+      - name: Verify Hugo installation
+        run: hugo version
+      
+      - name: Run maintenance checks
+        id: maintenance
+        run: |
+          chmod +x ./maintenance.sh
+          ./maintenance.sh > maintenance_report.txt 2>&1
+          echo "MAINTENANCE_REPORT<<EOF" >> $GITHUB_OUTPUT
+          cat maintenance_report.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        continue-on-error: true
+      
+      - name: Check for theme updates
+        id: theme-check
+        run: |
+          cd themes/PaperMod
+          git fetch origin
+          LOCAL_COMMIT=$(git rev-parse HEAD)
+          REMOTE_COMMIT=$(git rev-parse origin/master)
+          
+          if [[ "$LOCAL_COMMIT" != "$REMOTE_COMMIT" ]]; then
+            echo "THEME_UPDATES_AVAILABLE=true" >> $GITHUB_OUTPUT
+            echo "LOCAL_COMMIT=$LOCAL_COMMIT" >> $GITHUB_OUTPUT
+            echo "REMOTE_COMMIT=$REMOTE_COMMIT" >> $GITHUB_OUTPUT
+          else
+            echo "THEME_UPDATES_AVAILABLE=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Performance audit
+        run: |
+          echo "🏃‍♂️ Running performance checks..."
+          
+          # Build size check
+          hugo --minify > /dev/null
+          BUILD_SIZE=$(du -sh public | cut -f1)
+          echo "📊 Build size: $BUILD_SIZE"
+          
+          # CSS size check
+          CSS_LINES=$(wc -l < assets/css/extended/custom.css)
+          echo "🎨 CSS lines: $CSS_LINES"
+          
+          # Check for large files
+          echo "📁 Large files check:"
+          find public -type f -size +1M -exec ls -lh {} \; | head -5 || echo "No large files found"
+      
+      - name: Security audit
+        run: |
+          echo "🔒 Running security checks..."
+          
+          # Check for sensitive files
+          SENSITIVE_FILES=".env .env.local secrets.yml config.json"
+          for file in $SENSITIVE_FILES; do
+            if [[ -f "$file" ]]; then
+              echo "⚠️ Sensitive file found: $file"
+            fi
+          done
+          
+          # Check HTTPS configuration
+          if grep -q "baseURL = 'https://" config.toml; then
+            echo "✅ HTTPS properly configured"
+          else
+            echo "❌ HTTPS not configured in baseURL"
+          fi
+      
+      - name: Generate maintenance summary
+        run: |
+          echo "# 🛠️ Website Maintenance Report" > maintenance_summary.md
+          echo "**Date:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> maintenance_summary.md
+          echo "**Repository:** ${{ github.repository }}" >> maintenance_summary.md
+          echo "**Commit:** ${{ github.sha }}" >> maintenance_summary.md
+          echo "" >> maintenance_summary.md
+          
+          # Hugo version
+          echo "## 🚀 Hugo Status" >> maintenance_summary.md
+          echo "- **Version:** $(hugo version | head -1)" >> maintenance_summary.md
+          
+          # Theme status
+          echo "## 🎨 Theme Status" >> maintenance_summary.md
+          if [[ "${{ steps.theme-check.outputs.THEME_UPDATES_AVAILABLE }}" == "true" ]]; then
+            echo "- **PaperMod Theme:** ⚠️ Updates available" >> maintenance_summary.md
+            echo "  - Local: \`${{ steps.theme-check.outputs.LOCAL_COMMIT }}\`" >> maintenance_summary.md
+            echo "  - Remote: \`${{ steps.theme-check.outputs.REMOTE_COMMIT }}\`" >> maintenance_summary.md
+          else
+            echo "- **PaperMod Theme:** ✅ Up to date" >> maintenance_summary.md
+          fi
+          
+          # Build stats
+          echo "## 📊 Build Statistics" >> maintenance_summary.md
+          BUILD_SIZE=$(du -sh public 2>/dev/null | cut -f1 || echo "Unknown")
+          CSS_LINES=$(wc -l < assets/css/extended/custom.css 2>/dev/null || echo "Unknown")
+          CONTENT_FILES=$(find content -name "*.md" 2>/dev/null | wc -l || echo "Unknown")
+          echo "- **Build Size:** $BUILD_SIZE" >> maintenance_summary.md
+          echo "- **CSS Lines:** $CSS_LINES" >> maintenance_summary.md
+          echo "- **Content Files:** $CONTENT_FILES" >> maintenance_summary.md
+          
+          # Recommendations
+          echo "## 💡 Recommendations" >> maintenance_summary.md
+          if [[ "${{ steps.theme-check.outputs.THEME_UPDATES_AVAILABLE }}" == "true" ]]; then
+            echo "- 🔄 Update PaperMod theme to latest version" >> maintenance_summary.md
+          fi
+          
+          CSS_LINES_NUM=$(wc -l < assets/css/extended/custom.css)
+          if [[ $CSS_LINES_NUM -gt 1000 ]]; then
+            echo "- 🎨 Consider reviewing CSS file size (currently $CSS_LINES_NUM lines)" >> maintenance_summary.md
+          fi
+          
+          echo "- 📈 Monitor Core Web Vitals using Google PageSpeed Insights" >> maintenance_summary.md
+          echo "- 🔍 Review Google Analytics for traffic insights" >> maintenance_summary.md
+      
+      - name: Upload maintenance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: maintenance-report
+          path: |
+            maintenance_report.txt
+            maintenance_summary.md
+          retention-days: 30
+      
+      - name: Create Issue for Theme Updates (if needed)
+        if: steps.theme-check.outputs.THEME_UPDATES_AVAILABLE == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'maintenance,theme-update'
+            });
+            
+            // Only create issue if one doesn't exist
+            if (issues.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🔄 PaperMod Theme Update Available',
+                body: `## Theme Update Available
+                
+**Current Version:** \`${{ steps.theme-check.outputs.LOCAL_COMMIT }}\`
+**Latest Version:** \`${{ steps.theme-check.outputs.REMOTE_COMMIT }}\`
+
+### Steps to Update:
+1. \`cd themes/PaperMod\`
+2. \`git pull origin master\`
+3. Test locally with \`hugo server\`
+4. Commit and deploy if everything looks good
+
+### Before Updating:
+- [ ] Backup current theme configuration
+- [ ] Test locally to ensure custom CSS still works
+- [ ] Check for any breaking changes in the theme changelog
+
+This issue was automatically created by the maintenance workflow.`,
+                labels: ['maintenance', 'theme-update', 'enhancement']
+              });
+            }
+      
+      - name: Comment maintenance summary
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const summary = fs.readFileSync('maintenance_summary.md', 'utf8');
+            
+            // Find the latest commit
+            const { data: commits } = await github.rest.repos.listCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per_page: 1
+            });
+            
+            if (commits.length > 0) {
+              await github.rest.repos.createCommitComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: commits[0].sha,
+                body: summary
+              });
+            }
+
+  # Health check job - lightweight checks that run more frequently
+  health-check:
+    name: Quick Health Check
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
+    
+    env:
+      HUGO_VERSION: 0.146.7
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      
+      - name: Quick build test
+        run: |
+          hugo --buildDrafts > /dev/null
+          echo "✅ Build successful"
+      
+      - name: CSS health check
+        run: |
+          CSS_LINES=$(wc -l < assets/css/extended/custom.css)
+          echo "CSS lines: $CSS_LINES"
+          if [[ $CSS_LINES -gt 1200 ]]; then
+            echo "⚠️ CSS file is getting large"
+            exit 1
+          fi
+      
+      - name: Security check
+        run: |
+          if ! grep -q "baseURL = 'https://" config.toml; then
+            echo "❌ HTTPS not configured"
+            exit 1
+          fi
+          echo "✅ Security check passed"
